@@ -59,9 +59,7 @@ extension AppNavigationController: Wireframe {
 			.bind {
 				let homeViewModel: HomeViewModel = HomeViewModel(wireframe: self)
 				let homeViewController: HomeViewController = HomeViewController(viewModel: homeViewModel)
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-					self?.setViewControllers([homeViewController], animated: true)
-				}
+				self.setViewControllers([homeViewController], animated: true)
 			}
 			.disposed(by: self.disposeBag)
 	}

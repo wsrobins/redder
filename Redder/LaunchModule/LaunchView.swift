@@ -6,12 +6,11 @@
 //  Copyright © 2017 William Robinson. All rights reserved.
 //
 
-import RxCocoa
 import RxSwift
 import SnapKit
 
 protocol LaunchViewInterface: class {
-	
+	var launchAnimation: Observable<Void> { get }
 }
 
 final class LaunchView: UIView {
@@ -48,4 +47,14 @@ final class LaunchView: UIView {
 
 extension LaunchView: LaunchViewInterface {
 	
+	var launchAnimation: Observable<Void> {
+		return .create { (observer: AnyObserver<Void>) -> Disposable in
+			UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+				self.redderLabel.alpha = 0
+			}) { _ in
+				observer.onNext(())
+			}
+			return Disposables.create()
+		}
+	}
 }
