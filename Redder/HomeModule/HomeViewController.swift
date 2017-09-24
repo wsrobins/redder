@@ -41,15 +41,11 @@ final class HomeViewController: UIViewController {
 		let viewWillAppearInput: Observable<Void> = self
 			.rx
 			.sentMessage(#selector(self.viewWillAppear))
-			.map { _ in
-				return ()
-		}
+			.map { _ in }
 		let viewDidAppearInput: Observable<Void> = self
 			.rx
 			.sentMessage(#selector(self.viewDidAppear))
-			.map { _ in
-				return ()
-		}
+			.map { _ in }
 		let input: HomeViewModel.Input = HomeViewModel.Input(viewWillAppear: viewWillAppearInput, viewDidAppear: viewDidAppearInput)
 		let output: HomeViewModel.Output = viewModel.transform(input: input)
 		self.viewInterface.bind(feedItems: output.feedItems)
