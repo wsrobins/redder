@@ -12,6 +12,7 @@ import RxSwift
 struct LaunchViewModel: ViewModelType {
 
 	struct Input {
+		let viewDidAppear: Observable<Void>
 		let launchAnimation: Observable<Void>
 	}
 	
@@ -24,7 +25,7 @@ struct LaunchViewModel: ViewModelType {
 	}
 	
 	func transform(input: Input) -> Output {
-		self.wireframe.transitionToHomeModule(with: input.launchAnimation)
+		self.wireframe.transitionToHomeModule(with: input.viewDidAppear.flatMap { input.launchAnimation })
 		return Output()
 	}
 }

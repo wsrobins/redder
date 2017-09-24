@@ -36,11 +36,12 @@ final class LaunchViewController: UIViewController {
 	}
 	
 	private func bindModule() {
-		let launchAnimationInput: Observable<Void> = self
+		let viewDidAppearInput: Observable<Void> = self
 			.rx
 			.sentMessage(#selector(self.viewDidAppear))
-			.flatMap { _ in self.viewInterface.launchAnimation }
-		let input: LaunchViewModel.Input = LaunchViewModel.Input(launchAnimation: launchAnimationInput)
+			.map { _ in }
+		let launchAnimationInput: Observable<Void> = viewInterface.launchAnimation
+		let input: LaunchViewModel.Input = LaunchViewModel.Input(viewDidAppear: viewDidAppearInput, launchAnimation: launchAnimationInput)
 		_ = self.viewModel.transform(input: input)
 	}
 }
