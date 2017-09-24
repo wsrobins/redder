@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2AD107FB362268694B912EAB /* Pods_Redder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B0A070A5609263A04DCE9 /* Pods_Redder.framework */; };
+		C45C152C1F776C8000E71D65 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C152B1F776C8000E71D65 /* ViewModelType.swift */; };
+		C45C15301F776D0000E71D65 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C152D1F776D0000E71D65 /* LaunchView.swift */; };
+		C45C15311F776D0000E71D65 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C152E1F776D0000E71D65 /* LaunchViewController.swift */; };
+		C45C15321F776D0000E71D65 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C152F1F776D0000E71D65 /* LaunchViewModel.swift */; };
+		C45C15341F776D9900E71D65 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C15331F776D9900E71D65 /* AppNavigationController.swift */; };
+		C45C15391F77780E00E71D65 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C15361F77780E00E71D65 /* HomeView.swift */; };
+		C45C153A1F77780E00E71D65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C15371F77780E00E71D65 /* HomeViewController.swift */; };
+		C45C153B1F77780E00E71D65 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C15381F77780E00E71D65 /* HomeViewModel.swift */; };
+		C45C153D1F777A9000E71D65 /* UIView+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C153C1F777A9000E71D65 /* UIView+ReuseIdentifier.swift */; };
+		C45C153F1F777B4800E71D65 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C153E1F777B4800E71D65 /* FeedCollectionViewCell.swift */; };
+		C45C15411F777CD400E71D65 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C15401F777CD400E71D65 /* FeedItem.swift */; };
+		C468377F1F775E0C007F3109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C468377E1F775E0C007F3109 /* AppDelegate.swift */; };
+		C46837861F775E0C007F3109 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46837851F775E0C007F3109 /* Assets.xcassets */; };
+		C46837891F775E0C007F3109 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C46837871F775E0C007F3109 /* LaunchScreen.storyboard */; };
+		C4F5AA661F784A5900975DB3 /* AppNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5AA651F784A5900975DB3 /* AppNavigationBar.swift */; };
+		C4F5AA6A1F78514400975DB3 /* UIColor+Redder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2D9B0A070A5609263A04DCE9 /* Pods_Redder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Redder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C45C152B1F776C8000E71D65 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		C45C152D1F776D0000E71D65 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		C45C152E1F776D0000E71D65 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		C45C152F1F776D0000E71D65 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
+		C45C15331F776D9900E71D65 /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		C45C15361F77780E00E71D65 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C45C15371F77780E00E71D65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C45C15381F77780E00E71D65 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C45C153C1F777A9000E71D65 /* UIView+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ReuseIdentifier.swift"; sourceTree = "<group>"; };
+		C45C153E1F777B4800E71D65 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		C45C15401F777CD400E71D65 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		C468377B1F775E0C007F3109 /* Redder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C468377E1F775E0C007F3109 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C46837851F775E0C007F3109 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C46837881F775E0C007F3109 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C468378A1F775E0C007F3109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4F5AA651F784A5900975DB3 /* AppNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationBar.swift; sourceTree = "<group>"; };
+		C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Redder.swift"; sourceTree = "<group>"; };
+		E3009DA7FF3D66FC2FFA701A /* Pods-Redder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Redder/Pods-Redder.debug.xcconfig"; sourceTree = "<group>"; };
+		F0C01DDF1DA15EE50797FBDC /* Pods-Redder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Redder/Pods-Redder.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C46837781F775E0C007F3109 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD107FB362268694B912EAB /* Pods_Redder.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		74436EB611C9D10F0558056E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3009DA7FF3D66FC2FFA701A /* Pods-Redder.debug.xcconfig */,
+				F0C01DDF1DA15EE50797FBDC /* Pods-Redder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9A6F0D11162C97B53FF5FF5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D9B0A070A5609263A04DCE9 /* Pods_Redder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C45C151B1F776A8D00E71D65 /* LaunchModule */ = {
+			isa = PBXGroup;
+			children = (
+				C46837871F775E0C007F3109 /* LaunchScreen.storyboard */,
+				C45C152D1F776D0000E71D65 /* LaunchView.swift */,
+				C45C152E1F776D0000E71D65 /* LaunchViewController.swift */,
+				C45C152F1F776D0000E71D65 /* LaunchViewModel.swift */,
+			);
+			path = LaunchModule;
+			sourceTree = "<group>";
+		};
+		C45C15281F776C2400E71D65 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C468377E1F775E0C007F3109 /* AppDelegate.swift */,
+				C45C15331F776D9900E71D65 /* AppNavigationController.swift */,
+				C4F5AA651F784A5900975DB3 /* AppNavigationBar.swift */,
+				C45C152B1F776C8000E71D65 /* ViewModelType.swift */,
+				C45C153C1F777A9000E71D65 /* UIView+ReuseIdentifier.swift */,
+				C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */,
+				C46837851F775E0C007F3109 /* Assets.xcassets */,
+				C468378A1F775E0C007F3109 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C45C15351F7777FD00E71D65 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				C45C15361F77780E00E71D65 /* HomeView.swift */,
+				C45C15401F777CD400E71D65 /* FeedItem.swift */,
+				C45C153E1F777B4800E71D65 /* FeedCollectionViewCell.swift */,
+				C45C15371F77780E00E71D65 /* HomeViewController.swift */,
+				C45C15381F77780E00E71D65 /* HomeViewModel.swift */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		C46837721F775E0C007F3109 = {
+			isa = PBXGroup;
+			children = (
+				C468377D1F775E0C007F3109 /* Redder */,
+				C468377C1F775E0C007F3109 /* Products */,
+				74436EB611C9D10F0558056E /* Pods */,
+				9A6F0D11162C97B53FF5FF5D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C468377C1F775E0C007F3109 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C468377B1F775E0C007F3109 /* Redder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C468377D1F775E0C007F3109 /* Redder */ = {
+			isa = PBXGroup;
+			children = (
+				C45C15281F776C2400E71D65 /* App */,
+				C45C151B1F776A8D00E71D65 /* LaunchModule */,
+				C45C15351F7777FD00E71D65 /* HomeModule */,
+			);
+			path = Redder;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C468377A1F775E0C007F3109 /* Redder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C468378D1F775E0C007F3109 /* Build configuration list for PBXNativeTarget "Redder" */;
+			buildPhases = (
+				6F6E58E935377B8B68CAA703 /* [CP] Check Pods Manifest.lock */,
+				C46837771F775E0C007F3109 /* Sources */,
+				C46837781F775E0C007F3109 /* Frameworks */,
+				C46837791F775E0C007F3109 /* Resources */,
+				AA349D45CD2CAA35EC2AA23C /* [CP] Embed Pods Frameworks */,
+				A33BAA364B00B78DBA1E522B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Redder;
+			productName = Redder;
+			productReference = C468377B1F775E0C007F3109 /* Redder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C46837731F775E0C007F3109 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "William Robinson";
+				TargetAttributes = {
+					C468377A1F775E0C007F3109 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C46837761F775E0C007F3109 /* Build configuration list for PBXProject "Redder" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C46837721F775E0C007F3109;
+			productRefGroup = C468377C1F775E0C007F3109 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C468377A1F775E0C007F3109 /* Redder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C46837791F775E0C007F3109 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C46837891F775E0C007F3109 /* LaunchScreen.storyboard in Resources */,
+				C46837861F775E0C007F3109 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6F6E58E935377B8B68CAA703 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A33BAA364B00B78DBA1E522B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Redder/Pods-Redder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA349D45CD2CAA35EC2AA23C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Redder/Pods-Redder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C46837771F775E0C007F3109 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C468377F1F775E0C007F3109 /* AppDelegate.swift in Sources */,
+				C45C153B1F77780E00E71D65 /* HomeViewModel.swift in Sources */,
+				C45C153F1F777B4800E71D65 /* FeedCollectionViewCell.swift in Sources */,
+				C45C153D1F777A9000E71D65 /* UIView+ReuseIdentifier.swift in Sources */,
+				C45C15391F77780E00E71D65 /* HomeView.swift in Sources */,
+				C4F5AA6A1F78514400975DB3 /* UIColor+Redder.swift in Sources */,
+				C4F5AA661F784A5900975DB3 /* AppNavigationBar.swift in Sources */,
+				C45C15301F776D0000E71D65 /* LaunchView.swift in Sources */,
+				C45C153A1F77780E00E71D65 /* HomeViewController.swift in Sources */,
+				C45C152C1F776C8000E71D65 /* ViewModelType.swift in Sources */,
+				C45C15411F777CD400E71D65 /* FeedItem.swift in Sources */,
+				C45C15341F776D9900E71D65 /* AppNavigationController.swift in Sources */,
+				C45C15321F776D0000E71D65 /* LaunchViewModel.swift in Sources */,
+				C45C15311F776D0000E71D65 /* LaunchViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C46837871F775E0C007F3109 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C46837881F775E0C007F3109 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C468378B1F775E0C007F3109 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C468378C1F775E0C007F3109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C468378E1F775E0C007F3109 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3009DA7FF3D66FC2FFA701A /* Pods-Redder.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TWPE6ND5AF;
+				INFOPLIST_FILE = "$(SRCROOT)/Redder/App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WilliamRobinson.Redder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C468378F1F775E0C007F3109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0C01DDF1DA15EE50797FBDC /* Pods-Redder.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TWPE6ND5AF;
+				INFOPLIST_FILE = "$(SRCROOT)/Redder/App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WilliamRobinson.Redder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C46837761F775E0C007F3109 /* Build configuration list for PBXProject "Redder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C468378B1F775E0C007F3109 /* Debug */,
+				C468378C1F775E0C007F3109 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C468378D1F775E0C007F3109 /* Build configuration list for PBXNativeTarget "Redder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C468378E1F775E0C007F3109 /* Debug */,
+				C468378F1F775E0C007F3109 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C46837731F775E0C007F3109 /* Project object */;
+}
