@@ -25,7 +25,7 @@ final class LaunchView: UIView {
 	
 	init() {
 		super.init(frame: .zero)
-		self.backgroundColor = .white
+		self.backgroundColor = .redderBackgroundGray
 		self.assemble()
 		self.layout()
 	}
@@ -49,10 +49,12 @@ extension LaunchView: LaunchViewInterface {
 	
 	var launchAnimation: Observable<Void> {
 		return .create { (observer: AnyObserver<Void>) -> Disposable in
-			UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+			UIView.animate(withDuration: 0.4, delay: 0.5, options: .curveEaseIn, animations: {
 				self.redderLabel.alpha = 0
 			}) { _ in
-				observer.onNext(())
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+					observer.onNext(())
+				}
 			}
 			return Disposables.create()
 		}

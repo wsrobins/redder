@@ -11,6 +11,6 @@ import UIKit
 extension UIColor {
 	
 	static var redderBackgroundGray: UIColor {
-		return #colorLiteral(red: 0.9543703168, green: 0.9543703168, blue: 0.9543703168, alpha: 1)
+		return UIColor(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
 	}
 }

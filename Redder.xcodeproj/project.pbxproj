@@ -22,6 +22,7 @@
 		C468377F1F775E0C007F3109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C468377E1F775E0C007F3109 /* AppDelegate.swift */; };
 		C46837861F775E0C007F3109 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46837851F775E0C007F3109 /* Assets.xcassets */; };
 		C46837891F775E0C007F3109 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C46837871F775E0C007F3109 /* LaunchScreen.storyboard */; };
+		C4E8783D1F7893DF00AF04E7 /* LaunchToHomeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8783C1F7893DF00AF04E7 /* LaunchToHomeTransition.swift */; };
 		C4F5AA661F784A5900975DB3 /* AppNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5AA651F784A5900975DB3 /* AppNavigationBar.swift */; };
 		C4F5AA6A1F78514400975DB3 /* UIColor+Redder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		C46837851F775E0C007F3109 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C46837881F775E0C007F3109 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C468378A1F775E0C007F3109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4E8783C1F7893DF00AF04E7 /* LaunchToHomeTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchToHomeTransition.swift; sourceTree = "<group>"; };
 		C4F5AA651F784A5900975DB3 /* AppNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationBar.swift; sourceTree = "<group>"; };
 		C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Redder.swift"; sourceTree = "<group>"; };
 		E3009DA7FF3D66FC2FFA701A /* Pods-Redder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Redder/Pods-Redder.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				C45C152B1F776C8000E71D65 /* ViewModelType.swift */,
 				C45C153C1F777A9000E71D65 /* UIView+ReuseIdentifier.swift */,
 				C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */,
+				C4E8783C1F7893DF00AF04E7 /* LaunchToHomeTransition.swift */,
 				C46837851F775E0C007F3109 /* Assets.xcassets */,
 				C468378A1F775E0C007F3109 /* Info.plist */,
 			);
@@ -273,6 +276,7 @@
 				C45C153D1F777A9000E71D65 /* UIView+ReuseIdentifier.swift in Sources */,
 				C45C15391F77780E00E71D65 /* HomeView.swift in Sources */,
 				C4F5AA6A1F78514400975DB3 /* UIColor+Redder.swift in Sources */,
+				C4E8783D1F7893DF00AF04E7 /* LaunchToHomeTransition.swift in Sources */,
 				C4F5AA661F784A5900975DB3 /* AppNavigationBar.swift in Sources */,
 				C45C15301F776D0000E71D65 /* LaunchView.swift in Sources */,
 				C45C153A1F77780E00E71D65 /* HomeViewController.swift in Sources */,

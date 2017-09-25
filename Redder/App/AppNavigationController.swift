@@ -21,6 +21,7 @@ class AppNavigationController: UINavigationController {
 	
 	init() {
 		super.init(navigationBarClass: AppNavigationBar.self, toolbarClass: nil)
+		self.delegate = self
 		self.isNavigationBarHidden = true
 		let launchViewModel: LaunchViewModel = LaunchViewModel(wireframe: self)
 		let launchViewController: LaunchViewController = LaunchViewController(viewModel: launchViewModel)
@@ -39,7 +40,12 @@ class AppNavigationController: UINavigationController {
 extension AppNavigationController: UINavigationControllerDelegate {
 	
 	func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		return nil
+		switch (fromVC, toVC) {
+		case is (LaunchViewController, HomeViewController):
+			return LaunchToHomeTransition()
+		default:
+			return nil
+		}
 	}
 }
 
