@@ -49,7 +49,7 @@ extension LaunchView: LaunchViewInterface {
 	
 	var launchAnimation: Observable<Void> {
 		return .create { (observer: AnyObserver<Void>) -> Disposable in
-			UIView.animate(withDuration: 0.4, delay: 0.5, options: .curveEaseIn, animations: {
+			UIView.animate(withDuration: 0.4, delay: 0.5, options: .curveEaseOut, animations: {
 				self.redderLabel.alpha = 0
 			}) { _ in
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
