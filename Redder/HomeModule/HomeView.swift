@@ -8,7 +8,6 @@
 
 import RxCocoa
 import RxSwift
-import SnapKit
 
 protocol HomeViewInterface: class {
 	func bind(feedItems: Observable<[FeedItem]>)
@@ -16,23 +15,23 @@ protocol HomeViewInterface: class {
 
 final class HomeView: UIView {
 	
-	private let disposeBag: DisposeBag = DisposeBag()
+	private let disposeBag = DisposeBag()
 	
 	private lazy var feedCollectionView: UICollectionView = {
-		let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 220)
 		flowLayout.minimumLineSpacing = 0
-		let feedCollectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+		let feedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
 		feedCollectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: FeedCollectionViewCell.reuseIdentifier)
-		feedCollectionView.backgroundColor = .redderBackgroundGray
+		feedCollectionView.backgroundColor = .redderGray
 		feedCollectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
 		return feedCollectionView
 	}()
 	
 	init() {
 		super.init(frame: .zero)
-		self.assemble()
-		self.layout()
+		assemble()
+		layout()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -40,11 +39,11 @@ final class HomeView: UIView {
 	}
 	
 	private func assemble() {
-		self.addSubview(self.feedCollectionView)
+		addSubview(feedCollectionView)
 	}
 	
 	private func layout() {
-		self.feedCollectionView.snp.remakeConstraints { (make: ConstraintMaker) in
+		feedCollectionView.snp.remakeConstraints { make in
 			make.edges.equalToSuperview()
 		}
 	}
@@ -53,12 +52,12 @@ final class HomeView: UIView {
 extension HomeView: HomeViewInterface {
 	
 	func bind(feedItems: Observable<[FeedItem]>) {
-		let reuseIdentifier: String = FeedCollectionViewCell.reuseIdentifier
-		let cellType: FeedCollectionViewCell.Type = FeedCollectionViewCell.self
+		let reuseIdentifier = FeedCollectionViewCell.reuseIdentifier
+		let cellType = FeedCollectionViewCell.self
 		feedItems
-			.bind(to: self.feedCollectionView.rx.items(cellIdentifier: reuseIdentifier, cellType: cellType)) { (_, item: FeedItem, cell: FeedCollectionViewCell) in
+			.bind(to: feedCollectionView.rx.items(cellIdentifier: reuseIdentifier, cellType: cellType)) { _, item, cell in
 				cell.setUp(with: item)
 			}
-			.disposed(by: self.disposeBag)
+			.disposed(by: disposeBag)
 	}
 }

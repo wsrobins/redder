@@ -14,14 +14,14 @@ final class HomeViewController: UIViewController {
 	private let viewModel: HomeViewModel
 	
 	private var viewInterface: HomeViewInterface {
-		return self.view as! HomeViewInterface
+		return view as! HomeViewInterface
 	}
 	
 	init(viewModel: HomeViewModel) {
 		self.viewModel = viewModel
 		super.init(nibName: nil, bundle: nil)
-		self.title = "Redder"
-		self.extendedLayoutIncludesOpaqueBars = true
+		title = "Redder"
+		extendedLayoutIncludesOpaqueBars = true
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -29,25 +29,20 @@ final class HomeViewController: UIViewController {
 	}
 	
 	override func loadView() {
-		self.view = HomeView()
+		view = HomeView()
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.bindModule()
+		bindModule()
 	}
 	
 	private func bindModule() {
-		let viewWillAppearInput: Observable<Void> = self
-			.rx
-			.sentMessage(#selector(self.viewWillAppear))
-			.map { _ in }
-		let viewDidAppearInput: Observable<Void> = self
-			.rx
-			.sentMessage(#selector(self.viewDidAppear))
-			.map { _ in }
-		let input: HomeViewModel.Input = HomeViewModel.Input(viewWillAppear: viewWillAppearInput, viewDidAppear: viewDidAppearInput)
-		let output: HomeViewModel.Output = viewModel.transform(input: input)
-		self.viewInterface.bind(feedItems: output.feedItems)
+		let input = HomeViewModel.Input(
+			viewWillAppear: rx.sentMessage(#selector(viewWillAppear)).map { _ in },
+			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in }
+		)
+		let output = viewModel.transform(input: input)
+		viewInterface.bind(feedItems: output.feedItems)
 	}
 }

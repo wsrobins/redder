@@ -14,7 +14,7 @@ final class LaunchViewController: UIViewController {
 	private let viewModel: LaunchViewModel
 	
 	private var viewInterface: LaunchViewInterface {
-		return self.view as! LaunchViewInterface
+		return view as! LaunchViewInterface
 	}
 	
 	init(viewModel: LaunchViewModel) {
@@ -27,21 +27,19 @@ final class LaunchViewController: UIViewController {
 	}
 	
 	override func loadView() {
-		self.view = LaunchView()
+		view = LaunchView()
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.bindModule()
+		bindModule()
 	}
 	
 	private func bindModule() {
-		let viewDidAppearInput: Observable<Void> = self
-			.rx
-			.sentMessage(#selector(self.viewDidAppear))
-			.map { _ in }
-		let launchAnimationInput: Observable<Void> = viewInterface.launchAnimation
-		let input: LaunchViewModel.Input = LaunchViewModel.Input(viewDidAppear: viewDidAppearInput, launchAnimation: launchAnimationInput)
-		_ = self.viewModel.transform(input: input)
+		let input = LaunchViewModel.Input(
+			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in },
+			launchAnimation: viewInterface.launchAnimation
+		)
+		viewModel.transform(input: input)
 	}
 }

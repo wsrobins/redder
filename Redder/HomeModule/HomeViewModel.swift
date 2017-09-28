@@ -24,8 +24,8 @@ struct HomeViewModel: ViewModelType {
 	
 	private var feedItems: [FeedItem] {
 		var feedItems: [FeedItem] = []
-		for i in 0...10 {
-			let feedItem: FeedItem = FeedItem(title: "Title \(i)", description: "Description \(i)")
+		for i in 0...100 {
+			let feedItem = FeedItem(title: "Title \(i)", description: "Description \(i)")
 			feedItems.append(feedItem)
 		}
 		return feedItems
@@ -37,11 +37,9 @@ struct HomeViewModel: ViewModelType {
 	
 	func transform(input: Input) -> Output {
 		wireframe.showNavigationBar(with: input.viewDidAppear)
-		let feedItemsOutput: Observable<[FeedItem]> = input
+		let feedItemsOutput = input
 			.viewWillAppear
-			.map { _ -> [FeedItem] in
-				return self.feedItems
-		}
+			.map { self.feedItems }
 		return Output(feedItems: feedItemsOutput)
 	}
 }

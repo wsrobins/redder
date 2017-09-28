@@ -7,7 +7,6 @@
 //
 
 import RxSwift
-import SnapKit
 
 protocol LaunchViewInterface: class {
 	var launchAnimation: Observable<Void> { get }
@@ -16,7 +15,7 @@ protocol LaunchViewInterface: class {
 final class LaunchView: UIView {
 	
 	private lazy var redderLabel: UILabel = {
-		let redderLabel: UILabel = UILabel()
+		let redderLabel = UILabel()
 		redderLabel.text = "Redder"
 		redderLabel.textAlignment = .center
 		redderLabel.font = .systemFont(ofSize: 70, weight: .medium)
@@ -25,9 +24,9 @@ final class LaunchView: UIView {
 	
 	init() {
 		super.init(frame: .zero)
-		self.backgroundColor = .redderBackgroundGray
-		self.assemble()
-		self.layout()
+		backgroundColor = .redderGray
+		assemble()
+		layout()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -35,11 +34,11 @@ final class LaunchView: UIView {
 	}
 	
 	private func assemble() {
-		self.addSubview(self.redderLabel)
+		addSubview(redderLabel)
 	}
 	
 	private func layout() {
-		self.redderLabel.snp.remakeConstraints { (make: ConstraintMaker) in
+		redderLabel.snp.remakeConstraints { make in
 			make.center.equalToSuperview()
 		}
 	}
@@ -48,8 +47,8 @@ final class LaunchView: UIView {
 extension LaunchView: LaunchViewInterface {
 	
 	var launchAnimation: Observable<Void> {
-		return .create { (observer: AnyObserver<Void>) -> Disposable in
-			UIView.animate(withDuration: 0.4, delay: 0.5, options: .curveEaseOut, animations: {
+		return .create { observer in
+			UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: {
 				self.redderLabel.alpha = 0
 			}) { _ in
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

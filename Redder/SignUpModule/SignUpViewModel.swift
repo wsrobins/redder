@@ -1,22 +1,23 @@
 //
-//  LaunchViewModel.swift
+//  SignUpViewModel.swift
 //  Redder
 //
-//  Created by William Robinson on 9/24/17.
+//  Created by William Robinson on 9/28/17.
 //  Copyright © 2017 William Robinson. All rights reserved.
 //
 
 import RxCocoa
 import RxSwift
 
-struct LaunchViewModel: ViewModelType {
+struct SignUpViewModel: ViewModelType {
 
 	struct Input {
 		let viewDidAppear: Observable<Void>
-		let launchAnimation: Observable<Void>
 	}
 	
-	struct Output {}
+	struct Output {
+		
+	}
 	
 	private unowned let wireframe: Wireframe
 	
@@ -26,7 +27,7 @@ struct LaunchViewModel: ViewModelType {
 	
 	@discardableResult
 	func transform(input: Input) -> Output {
-		wireframe.transitionFromLaunchModule(with: input.viewDidAppear.flatMap { input.launchAnimation })
+		wireframe.showNavigationBar(with: input.viewDidAppear)
 		return Output()
 	}
 }
