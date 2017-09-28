@@ -24,15 +24,11 @@ class SlideTransition: NSObject, UIViewControllerAnimatedTransitioning {
 		}
 		let containerView = transitionContext.containerView
 		containerView.addSubview(toView)
-		toView.snp.remakeConstraints { make in
-			make.top.bottom.width.equalToSuperview()
-			make.left.equalTo(containerView.snp.right)
-		}
+		toView.frame = containerView.bounds
+		toView.transform = CGAffineTransform(translationX: containerView.bounds.width, y: 0)
 		containerView.layoutIfNeeded()
 		UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-			toView.snp.remakeConstraints { make in
-				make.edges.equalToSuperview()
-			}
+			toView.transform = .identity
 			containerView.layoutIfNeeded()
 		}) { _ in
 			transitionContext.completeTransition(true)

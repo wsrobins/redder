@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Redder/App/AppNavigationController.swift"
-            timestampString = "528269314.440513"
+            timestampString = "528269955.292591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "transitionToOnboardingModule(with:)"
             landmarkType = "7">
          </BreakpointContent>

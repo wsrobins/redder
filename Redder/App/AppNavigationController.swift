@@ -45,14 +45,15 @@ class AppNavigationController: UINavigationController {
 extension AppNavigationController: UINavigationControllerDelegate {
 	
 	func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		return nil
 		if fromVC is LaunchViewController {
 			return SlideTransition()
 		}
-		switch (fromVC, toVC) {
-		default:
-			return nil
-		}
+		return nil
+//		switch (fromVC, toVC) {
+//		case ( , )
+//		default:
+//			return nil
+//		}
 	}
 }
 
