@@ -11,7 +11,7 @@ import UIKit
 
 class SlideTransition: NSObject, UIViewControllerAnimatedTransitioning {
 	
-	let duration: TimeInterval = 0.35
+	let duration: TimeInterval = 0.4
 	
 	func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
 		return duration
@@ -24,12 +24,10 @@ class SlideTransition: NSObject, UIViewControllerAnimatedTransitioning {
 		}
 		let containerView = transitionContext.containerView
 		containerView.addSubview(toView)
-		toView.frame = containerView.bounds
-		toView.transform = CGAffineTransform(translationX: containerView.bounds.width, y: 0)
 		containerView.layoutIfNeeded()
+		toView.transform = CGAffineTransform(translationX: containerView.frame.width, y: 0)
 		UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
 			toView.transform = .identity
-			containerView.layoutIfNeeded()
 		}) { _ in
 			transitionContext.completeTransition(true)
 		}
