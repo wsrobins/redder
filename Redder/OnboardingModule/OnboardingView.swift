@@ -67,7 +67,7 @@ final class OnboardingView: UIView {
 			make.centerY.equalToSuperview().offset(-60)
 		}
 		signUpButton.snp.remakeConstraints { make in
-			make.top.equalTo(loginButton.snp.bottom).offset(30)
+			make.top.equalTo(loginButton.snp.bottom).offset(40)
 			make.centerX.equalToSuperview()
 		}
 		skipButton.snp.remakeConstraints { make in
