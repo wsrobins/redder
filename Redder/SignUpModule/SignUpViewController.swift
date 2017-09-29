@@ -37,10 +37,19 @@ final class SignUpViewController: UIViewController {
 		bindModule()
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		print(RxSwift.Resources.total)
+	}
+	
+	deinit {
+		print("yep")
+	}
+	
 	private func bindModule() {
 		let input = SignUpViewModel.Input(
 			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in }
 		)
-		viewModel.transform(input: input)
+		let output = viewModel.transform(input: input)
 	}
 }

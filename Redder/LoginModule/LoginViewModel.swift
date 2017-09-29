@@ -9,14 +9,15 @@
 import RxCocoa
 import RxSwift
 
-struct LoginViewModel: ViewModelType {
+struct LoginViewModel {
 
 	struct Input {
 		let viewDidAppear: Observable<Void>
+		let backgroundTap: Observable<Void>
 	}
 	
 	struct Output {
-		
+		let dismissKeyboard: Observable<Void>
 	}
 	
 	private unowned let wireframe: Wireframe
@@ -25,9 +26,10 @@ struct LoginViewModel: ViewModelType {
 		self.wireframe = wireframe
 	}
 	
-	@discardableResult
 	func transform(input: Input) -> Output {
 		wireframe.showNavigationBar(with: input.viewDidAppear)
-		return Output()
+		return Output(
+			dismissKeyboard: input.backgroundTap
+		)
 	}
 }

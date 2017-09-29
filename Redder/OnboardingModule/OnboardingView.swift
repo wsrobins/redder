@@ -17,11 +17,14 @@ protocol OnboardingViewInterface: class {
 
 final class OnboardingView: UIView {
 	
+	private lazy var buttonContainerView = UIView()
+	
 	private lazy var loginButton: UIButton = {
 		let loginButton = UIButton()
 		loginButton.setTitle("LOGIN", for: .normal)
 		loginButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
 		loginButton.setTitleColor(.black, for: .normal)
+		loginButton.setTitleColor(.appDarkGray, for: .highlighted)
 		loginButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
 		return loginButton
 	}()
@@ -31,6 +34,7 @@ final class OnboardingView: UIView {
 		signUpButton.setTitle("SIGN UP", for: .normal)
 		signUpButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
 		signUpButton.setTitleColor(.black, for: .normal)
+		signUpButton.setTitleColor(.appDarkGray, for: .highlighted)
 		signUpButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
 		return signUpButton
 	}()
@@ -40,13 +44,14 @@ final class OnboardingView: UIView {
 		skipButton.setTitle("SKIP", for: .normal)
 		skipButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .light)
 		skipButton.setTitleColor(.black, for: .normal)
+		skipButton.setTitleColor(.appDarkGray, for: .highlighted)
 		skipButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
 		return skipButton
 	}()
 	
 	init() {
 		super.init(frame: .zero)
-		backgroundColor = .redderGray
+		style()
 		assemble()
 		layout()
 	}
@@ -55,23 +60,31 @@ final class OnboardingView: UIView {
 		fatalError()
 	}
 	
+	private func style() {
+		backgroundColor = .appLightGray
+	}
+	
 	private func assemble() {
-		addSubview(loginButton)
-		addSubview(signUpButton)
+		addSubview(buttonContainerView)
+		buttonContainerView.addSubview(loginButton)
+		buttonContainerView.addSubview(signUpButton)
 		addSubview(skipButton)
 	}
 	
 	private func layout() {
-		loginButton.snp.remakeConstraints { make in
+		buttonContainerView.snp.remakeConstraints { make in
 			make.centerX.equalToSuperview()
-			make.centerY.equalToSuperview().offset(-60)
+			make.centerY.equalToSuperview().offset(-10)
+		}
+		loginButton.snp.remakeConstraints { make in
+			make.top.left.right.equalToSuperview()
 		}
 		signUpButton.snp.remakeConstraints { make in
 			make.top.equalTo(loginButton.snp.bottom).offset(40)
-			make.centerX.equalToSuperview()
+			make.left.bottom.right.equalToSuperview()
 		}
 		skipButton.snp.remakeConstraints { make in
-			make.bottom.equalToSuperview().inset(30)
+			make.bottom.equalToSuperview().inset(20)
 			make.centerX.equalToSuperview()
 		}
 	}

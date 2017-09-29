@@ -36,6 +36,11 @@ final class OnboardingViewController: UIViewController {
 		bindModule()
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		print(RxSwift.Resources.total)
+	}
+	
 	private func bindModule() {
 		let input = OnboardingViewModel.Input(
 			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in },

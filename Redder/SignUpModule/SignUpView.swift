@@ -17,13 +17,17 @@ final class SignUpView: UIView {
 	
 	init() {
 		super.init(frame: .zero)
-		backgroundColor = .redderGray
+		style()
 		assemble()
 		layout()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError()
+	}
+	
+	private func style() {
+		backgroundColor = .appLightGray
 	}
 	
 	private func assemble() {

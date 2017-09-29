@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-struct SignUpViewModel: ViewModelType {
+struct SignUpViewModel {
 
 	struct Input {
 		let viewDidAppear: Observable<Void>
@@ -25,7 +25,6 @@ struct SignUpViewModel: ViewModelType {
 		self.wireframe = wireframe
 	}
 	
-	@discardableResult
 	func transform(input: Input) -> Output {
 		wireframe.showNavigationBar(with: input.viewDidAppear)
 		return Output()

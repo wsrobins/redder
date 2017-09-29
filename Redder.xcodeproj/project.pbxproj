@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2AD107FB362268694B912EAB /* Pods_Redder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B0A070A5609263A04DCE9 /* Pods_Redder.framework */; };
-		C45C152C1F776C8000E71D65 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C152B1F776C8000E71D65 /* ViewModelType.swift */; };
 		C45C15301F776D0000E71D65 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C152D1F776D0000E71D65 /* LaunchView.swift */; };
 		C45C15311F776D0000E71D65 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C152E1F776D0000E71D65 /* LaunchViewController.swift */; };
 		C45C15321F776D0000E71D65 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C152F1F776D0000E71D65 /* LaunchViewModel.swift */; };
@@ -29,9 +28,9 @@
 		C46C55FD1F7CB12000AAE97F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C55FA1F7CB12000AAE97F /* SignUpViewController.swift */; };
 		C46C55FE1F7CB12000AAE97F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C55FB1F7CB12000AAE97F /* SignUpViewModel.swift */; };
 		C46C56001F7CB88000AAE97F /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C55FF1F7CB88000AAE97F /* UIView+Shadow.swift */; };
+		C4B477BD1F7DF2650030F211 /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B477BC1F7DF2640030F211 /* UIColor+App.swift */; };
 		C4E8783D1F7893DF00AF04E7 /* SlideTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8783C1F7893DF00AF04E7 /* SlideTransition.swift */; };
 		C4F5AA661F784A5900975DB3 /* AppNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5AA651F784A5900975DB3 /* AppNavigationBar.swift */; };
-		C4F5AA6A1F78514400975DB3 /* UIColor+Redder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */; };
 		C4FBE7351F79FA4B001DE8F8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FBE7321F79FA4B001DE8F8 /* OnboardingView.swift */; };
 		C4FBE7361F79FA4B001DE8F8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FBE7331F79FA4B001DE8F8 /* OnboardingViewController.swift */; };
 		C4FBE7371F79FA4B001DE8F8 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FBE7341F79FA4B001DE8F8 /* OnboardingViewModel.swift */; };
@@ -39,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		2D9B0A070A5609263A04DCE9 /* Pods_Redder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Redder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C45C152B1F776C8000E71D65 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		C45C152D1F776D0000E71D65 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		C45C152E1F776D0000E71D65 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		C45C152F1F776D0000E71D65 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
@@ -62,9 +60,9 @@
 		C46C55FA1F7CB12000AAE97F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C46C55FB1F7CB12000AAE97F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C46C55FF1F7CB88000AAE97F /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		C4B477BC1F7DF2640030F211 /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
 		C4E8783C1F7893DF00AF04E7 /* SlideTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideTransition.swift; sourceTree = "<group>"; };
 		C4F5AA651F784A5900975DB3 /* AppNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationBar.swift; sourceTree = "<group>"; };
-		C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Redder.swift"; sourceTree = "<group>"; };
 		C4FBE7321F79FA4B001DE8F8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C4FBE7331F79FA4B001DE8F8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C4FBE7341F79FA4B001DE8F8 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -118,10 +116,9 @@
 				C468377E1F775E0C007F3109 /* AppDelegate.swift */,
 				C45C15331F776D9900E71D65 /* AppNavigationController.swift */,
 				C4F5AA651F784A5900975DB3 /* AppNavigationBar.swift */,
-				C45C152B1F776C8000E71D65 /* ViewModelType.swift */,
 				C45C153C1F777A9000E71D65 /* UIView+ReuseIdentifier.swift */,
+				C4B477BC1F7DF2640030F211 /* UIColor+App.swift */,
 				C46C55FF1F7CB88000AAE97F /* UIView+Shadow.swift */,
-				C4F5AA691F78514400975DB3 /* UIColor+Redder.swift */,
 				C4E8783C1F7893DF00AF04E7 /* SlideTransition.swift */,
 				C46837851F775E0C007F3109 /* Assets.xcassets */,
 				C468378A1F775E0C007F3109 /* Info.plist */,
@@ -329,7 +326,6 @@
 				C45C153F1F777B4800E71D65 /* FeedCollectionViewCell.swift in Sources */,
 				C45C153D1F777A9000E71D65 /* UIView+ReuseIdentifier.swift in Sources */,
 				C45C15391F77780E00E71D65 /* HomeView.swift in Sources */,
-				C4F5AA6A1F78514400975DB3 /* UIColor+Redder.swift in Sources */,
 				C46C55FD1F7CB12000AAE97F /* SignUpViewController.swift in Sources */,
 				C4E8783D1F7893DF00AF04E7 /* SlideTransition.swift in Sources */,
 				C4F5AA661F784A5900975DB3 /* AppNavigationBar.swift in Sources */,
@@ -338,7 +334,7 @@
 				C4FBE7371F79FA4B001DE8F8 /* OnboardingViewModel.swift in Sources */,
 				C45C15301F776D0000E71D65 /* LaunchView.swift in Sources */,
 				C45C153A1F77780E00E71D65 /* HomeViewController.swift in Sources */,
-				C45C152C1F776C8000E71D65 /* ViewModelType.swift in Sources */,
+				C4B477BD1F7DF2650030F211 /* UIColor+App.swift in Sources */,
 				C45C15411F777CD400E71D65 /* FeedItem.swift in Sources */,
 				C45C15341F776D9900E71D65 /* AppNavigationController.swift in Sources */,
 				C4FBE7361F79FA4B001DE8F8 /* OnboardingViewController.swift in Sources */,
@@ -482,6 +478,7 @@
 				DEVELOPMENT_TEAM = TWPE6ND5AF;
 				INFOPLIST_FILE = "$(SRCROOT)/Redder/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WilliamRobinson.Redder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -498,6 +495,7 @@
 				DEVELOPMENT_TEAM = TWPE6ND5AF;
 				INFOPLIST_FILE = "$(SRCROOT)/Redder/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WilliamRobinson.Redder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

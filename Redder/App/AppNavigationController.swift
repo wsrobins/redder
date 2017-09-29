@@ -45,15 +45,16 @@ class AppNavigationController: UINavigationController {
 extension AppNavigationController: UINavigationControllerDelegate {
 	
 	func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		if fromVC is LaunchViewController {
-			return SlideTransition()
+		switch (fromVC, toVC) {
+		case (is LaunchViewController, _),
+		     (is OnboardingViewController, _):
+			return SlideTransition(direction: .left)
+		case (is LoginViewController, is OnboardingViewController),
+		     (is SignUpViewController, is OnboardingViewController):
+			return SlideTransition(direction: .right)
+		default:
+			return nil
 		}
-		return nil
-//		switch (fromVC, toVC) {
-//		case ( , )
-//		default:
-//			return nil
-//		}
 	}
 }
 
@@ -61,15 +62,15 @@ extension AppNavigationController: Wireframe {
 	
 	func showNavigationBar(with observable: Observable<Void>) {
 		observable
-			.filter { self.navigationBar.isHidden }
-			.bind { self.setNavigationBarHidden(false, animated: true) }
+			.filter { [unowned self] in self.navigationBar.isHidden }
+			.bind { [unowned self] in self.setNavigationBarHidden(false, animated: true) }
 			.disposed(by: disposeBag)
 	}
 	
 	func hideNavigationBar(with observable: Observable<Void>) {
 		observable
-			.filter { !self.navigationBar.isHidden }
-			.bind { self.setNavigationBarHidden(true, animated: true) }
+			.filter { [unowned self] in !self.navigationBar.isHidden }
+			.bind { [unowned self] in self.setNavigationBarHidden(true, animated: true) }
 			.disposed(by: disposeBag)
 	}
 	
@@ -82,9 +83,7 @@ extension AppNavigationController: Wireframe {
 		let onboardingViewController = OnboardingViewController(viewModel: onboardingViewModel)
 		observable
 			.take(1)
-			.bind {
-				self.setViewControllers([onboardingViewController], animated: true)
-			}
+			.bind { [unowned self, onboardingViewController] in self.setViewControllers([onboardingViewController], animated: true) }
 			.disposed(by: disposeBag)
 	}
 	
@@ -93,20 +92,13 @@ extension AppNavigationController: Wireframe {
 		let loginViewController = LoginViewController(viewModel: loginViewModel)
 		observable
 			.takeUntil(loginViewController.rx.deallocated)
-			.bind {
-				self.pushViewController(loginViewController, animated: true)
-			}
+			.bind { [unowned self, loginViewController] in self.pushViewController(loginViewController, animated: true) }
 			.disposed(by: self.disposeBag)
 	}
 	
 	func transitionToSignUpModule(with observable: Observable<Void>) {
-		let signUpViewModel = SignUpViewModel(wireframe: self)
-		let signUpViewController = SignUpViewController(viewModel: signUpViewModel)
 		observable
-			.takeUntil(signUpViewController.rx.deallocated)
-			.bind {
-				self.pushViewController(signUpViewController, animated: true)
-			}
+			.bind { [unowned self] in self.pushViewController(SignUpViewController(viewModel: SignUpViewModel(wireframe: self)), animated: true) }
 			.disposed(by: disposeBag)
 	}
 	
@@ -115,9 +107,7 @@ extension AppNavigationController: Wireframe {
 		let homeViewController = HomeViewController(viewModel: homeViewModel)
 		observable
 			.take(1)
-			.bind {
-				self.setViewControllers([homeViewController], animated: true)
-			}
+			.bind { [unowned self] in self.setViewControllers([homeViewController], animated: true) }
 			.disposed(by: disposeBag)
 	}
 }

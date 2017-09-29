@@ -23,7 +23,7 @@ final class HomeView: UIView {
 		flowLayout.minimumLineSpacing = 0
 		let feedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
 		feedCollectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: FeedCollectionViewCell.reuseIdentifier)
-		feedCollectionView.backgroundColor = .redderGray
+		feedCollectionView.backgroundColor = .appLightGray
 		feedCollectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
 		return feedCollectionView
 	}()

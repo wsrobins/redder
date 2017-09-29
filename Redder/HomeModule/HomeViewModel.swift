@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-struct HomeViewModel: ViewModelType {
+struct HomeViewModel {
 	
 	struct Input {
 		let viewWillAppear: Observable<Void>
@@ -37,9 +37,10 @@ struct HomeViewModel: ViewModelType {
 	
 	func transform(input: Input) -> Output {
 		wireframe.showNavigationBar(with: input.viewDidAppear)
-		let feedItemsOutput = input
-			.viewWillAppear
-			.map { self.feedItems }
-		return Output(feedItems: feedItemsOutput)
+		return Output(
+			feedItems: input
+				.viewWillAppear
+				.map { self.feedItems }
+		)
 	}
 }

@@ -38,7 +38,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
 	
 	private lazy var bottomPanelBorderView: UIView = {
 		let bottomPanelBorderView = UIView()
-		bottomPanelBorderView.backgroundColor = .redderGray
+		bottomPanelBorderView.backgroundColor = .appLightGray
 		return bottomPanelBorderView
 	}()
 	

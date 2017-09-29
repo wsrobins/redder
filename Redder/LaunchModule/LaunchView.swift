@@ -24,13 +24,17 @@ final class LaunchView: UIView {
 	
 	init() {
 		super.init(frame: .zero)
-		backgroundColor = .redderGray
+		style()
 		assemble()
 		layout()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError()
+	}
+	
+	private func style() {
+		backgroundColor = .appLightGray
 	}
 	
 	private func assemble() {
@@ -48,13 +52,9 @@ extension LaunchView: LaunchViewInterface {
 	
 	var launchAnimation: Observable<Void> {
 		return .create { observer in
-			UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: {
+			UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
 				self.redderLabel.alpha = 0
-			}) { _ in
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-					observer.onNext(())
-				}
-			}
+			}) { _ in observer.onNext(()) }
 			return Disposables.create()
 		}
 	}

@@ -6,6 +6,7 @@
 //  Copyright © 2017 William Robinson. All rights reserved.
 //
 
+import RxSwift
 import UIKit
 
 @UIApplicationMain

@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-struct OnboardingViewModel: ViewModelType {
+struct OnboardingViewModel {
 
 	struct Input {
 		let viewDidAppear: Observable<Void>
@@ -18,20 +18,16 @@ struct OnboardingViewModel: ViewModelType {
 		let skipButtonTap: ControlEvent<Void>
 	}
 	
-	struct Output {}
-	
 	private unowned let wireframe: Wireframe
 	
 	init(wireframe: Wireframe) {
 		self.wireframe = wireframe
 	}
 	
-	@discardableResult
-	func transform(input: Input) -> Output {
+	func transform(input: Input) {
 		wireframe.hideNavigationBar(with: input.viewDidAppear)
 		wireframe.transitionToLoginModule(with: input.loginButtonTap.asObservable())
 		wireframe.transitionToSignUpModule(with: input.signUpButtonTap.asObservable())
 		wireframe.transitionToHomeModule(with: input.skipButtonTap.asObservable())
-		return Output()
 	}
 }

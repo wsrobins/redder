@@ -37,10 +37,17 @@ final class LoginViewController: UIViewController {
 		bindModule()
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		print(RxSwift.Resources.total)
+	}
+	
 	private func bindModule() {
 		let input = LoginViewModel.Input(
-			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in }
+			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in },
+			backgroundTap: viewInterface.backgroundTap
 		)
-		viewModel.transform(input: input)
+		let output = viewModel.transform(input: input)
+		viewInterface.dismissKeyboard(with: output.dismissKeyboard)
 	}
 }

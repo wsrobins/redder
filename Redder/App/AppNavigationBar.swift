@@ -12,13 +12,17 @@ class AppNavigationBar: UINavigationBar {
 	
 	override init(frame: CGRect) {
 		super.init(frame: .zero)
-		tintColor = .black
-		isTranslucent = false
-		shadowImage = UIImage()
-		shadow()
+		style()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError()
+	}
+	
+	private func style() {
+		tintColor = .black
+		isTranslucent = false
+		shadowImage = UIImage()
+		shadow()
 	}
 }

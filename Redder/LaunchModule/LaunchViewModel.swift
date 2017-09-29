@@ -9,24 +9,20 @@
 import RxCocoa
 import RxSwift
 
-struct LaunchViewModel: ViewModelType {
+struct LaunchViewModel {
 
 	struct Input {
 		let viewDidAppear: Observable<Void>
 		let launchAnimation: Observable<Void>
 	}
 	
-	struct Output {}
-	
 	private unowned let wireframe: Wireframe
 	
 	init(wireframe: Wireframe) {
 		self.wireframe = wireframe
 	}
-	
-	@discardableResult
-	func transform(input: Input) -> Output {
+
+	func transform(input: Input) {
 		wireframe.transitionFromLaunchModule(with: input.viewDidAppear.flatMap { input.launchAnimation })
-		return Output()
 	}
 }
