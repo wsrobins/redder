@@ -6,13 +6,9 @@
 //  Copyright © 2017 William Robinson. All rights reserved.
 //
 
-import RxCocoa
 import RxSwift
-import UIKit
 
 protocol Wireframe: class {
-	func showNavigationBar(with observable: Observable<Void>)
-	func hideNavigationBar(with observable: Observable<Void>)
 	func transitionFromLaunchModule(with observable: Observable<Void>)
 	func transitionToOnboardingModule(with observable: Observable<Void>)
 	func transitionToLoginModule(with observable: Observable<Void>)
@@ -20,17 +16,12 @@ protocol Wireframe: class {
 	func transitionToHomeModule(with observable: Observable<Void>)
 }
 
-class AppNavigationController: UINavigationController {
-	
-	private let disposeBag = DisposeBag()
+class AppNavigationController: UINavigationController, Bag {
 	
 	init() {
 		super.init(navigationBarClass: AppNavigationBar.self, toolbarClass: nil)
 		delegate = self
-		isNavigationBarHidden = true
-		let launchViewModel = LaunchViewModel(wireframe: self)
-		let launchViewController = LaunchViewController(viewModel: launchViewModel)
-		viewControllers = [launchViewController]
+		setUpLaunchModule()
 	}
 	
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -39,6 +30,12 @@ class AppNavigationController: UINavigationController {
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError()
+	}
+	
+	private func setUpLaunchModule() {
+		let launchViewModel = LaunchViewModel(wireframe: self)
+		let launchViewController = LaunchViewController(viewModel: launchViewModel)
+		viewControllers = [launchViewController]
 	}
 }
 
@@ -60,54 +57,48 @@ extension AppNavigationController: UINavigationControllerDelegate {
 
 extension AppNavigationController: Wireframe {
 	
-	func showNavigationBar(with observable: Observable<Void>) {
-		observable
-			.filter { [unowned self] in self.navigationBar.isHidden }
-			.bind { [unowned self] in self.setNavigationBarHidden(false, animated: true) }
-			.disposed(by: disposeBag)
-	}
-	
-	func hideNavigationBar(with observable: Observable<Void>) {
-		observable
-			.filter { [unowned self] in !self.navigationBar.isHidden }
-			.bind { [unowned self] in self.setNavigationBarHidden(true, animated: true) }
-			.disposed(by: disposeBag)
-	}
-	
 	func transitionFromLaunchModule(with observable: Observable<Void>) {
-		transitionToOnboardingModule(with: observable)
+		transitionToOnboardingModule(with: observable.take(1))
 	}
 	
 	func transitionToOnboardingModule(with observable: Observable<Void>) {
-		let onboardingViewModel = OnboardingViewModel(wireframe: self)
-		let onboardingViewController = OnboardingViewController(viewModel: onboardingViewModel)
 		observable
-			.take(1)
-			.bind { [unowned self, onboardingViewController] in self.setViewControllers([onboardingViewController], animated: true) }
-			.disposed(by: disposeBag)
+			.bind { [unowned self] in
+				let onboardingViewModel = OnboardingViewModel(wireframe: self)
+				let onboardingViewController = OnboardingViewController(viewModel: onboardingViewModel)
+				self.setViewControllers([onboardingViewController], animated: true)
+			}
+			.disposed(by: bag)
 	}
 	
 	func transitionToLoginModule(with observable: Observable<Void>) {
-		let loginViewModel = LoginViewModel(wireframe: self)
-		let loginViewController = LoginViewController(viewModel: loginViewModel)
 		observable
-			.takeUntil(loginViewController.rx.deallocated)
-			.bind { [unowned self, loginViewController] in self.pushViewController(loginViewController, animated: true) }
-			.disposed(by: self.disposeBag)
+			.bind { [unowned self] in
+				let loginViewModel = LoginViewModel(wireframe: self)
+				let loginViewController = LoginViewController(viewModel: loginViewModel)
+				self.pushViewController(loginViewController, animated: true)
+			}
+			.disposed(by: bag)
 	}
 	
 	func transitionToSignUpModule(with observable: Observable<Void>) {
 		observable
-			.bind { [unowned self] in self.pushViewController(SignUpViewController(viewModel: SignUpViewModel(wireframe: self)), animated: true) }
-			.disposed(by: disposeBag)
+			.bind { [unowned self] in
+				let signUpViewModel = SignUpViewModel(wireframe: self)
+				let signUpViewController = SignUpViewController(viewModel: signUpViewModel)
+				self.pushViewController(signUpViewController, animated: true)
+			}
+			.disposed(by: bag)
 	}
 	
 	func transitionToHomeModule(with observable: Observable<Void>) {
-		let homeViewModel = HomeViewModel(wireframe: self)
-		let homeViewController = HomeViewController(viewModel: homeViewModel)
 		observable
 			.take(1)
-			.bind { [unowned self] in self.setViewControllers([homeViewController], animated: true) }
-			.disposed(by: disposeBag)
+			.bind { [unowned self] in
+				let homeViewModel = HomeViewModel(wireframe: self)
+				let homeViewController = HomeViewController(viewModel: homeViewModel)
+				self.setViewControllers([homeViewController], animated: true)
+			}
+			.disposed(by: bag)
 	}
 }

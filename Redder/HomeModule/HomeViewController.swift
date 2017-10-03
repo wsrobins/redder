@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, ShowNavigationBar, Bag {
 	
 	private let viewModel: HomeViewModel
 	
@@ -39,10 +39,11 @@ final class HomeViewController: UIViewController {
 	
 	private func bindModule() {
 		let input = HomeViewModel.Input(
-			viewWillAppear: rx.sentMessage(#selector(viewWillAppear)).map { _ in },
-			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in }
+			viewWillAppear: rx.viewWillAppear,
+			viewDidAppear: rx.viewDidAppear
 		)
 		let output = viewModel.transform(input: input)
+		showNavigationBar(with: output.showNavigationBar)
 		viewInterface.bind(feedItems: output.feedItems)
 	}
 }

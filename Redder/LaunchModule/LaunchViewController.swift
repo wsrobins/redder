@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-final class LaunchViewController: UIViewController {
+final class LaunchViewController: UIViewController, HideNavigationBar, Bag {
 	
 	private let viewModel: LaunchViewModel
 	
@@ -37,9 +37,11 @@ final class LaunchViewController: UIViewController {
 	
 	private func bindModule() {
 		let input = LaunchViewModel.Input(
-			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in },
+			viewWillAppear: rx.viewWillAppear,
+			viewDidAppear: rx.viewDidAppear,
 			launchAnimation: viewInterface.launchAnimation
 		)
-		viewModel.transform(input: input)
+		let output = viewModel.transform(input: input)
+		hideNavigationBar(with: output.hideNavigationBar)
 	}
 }

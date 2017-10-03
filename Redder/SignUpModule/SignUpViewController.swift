@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-final class SignUpViewController: UIViewController {
+final class SignUpViewController: UIViewController, ShowNavigationBar, Bag {
 	
 	private let viewModel: SignUpViewModel
 	
@@ -37,19 +37,11 @@ final class SignUpViewController: UIViewController {
 		bindModule()
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		print(RxSwift.Resources.total)
-	}
-	
-	deinit {
-		print("yep")
-	}
-	
 	private func bindModule() {
 		let input = SignUpViewModel.Input(
-			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in }
+			viewDidAppear: rx.viewDidAppear
 		)
 		let output = viewModel.transform(input: input)
+		showNavigationBar(with: output.showNavigationBar)
 	}
 }

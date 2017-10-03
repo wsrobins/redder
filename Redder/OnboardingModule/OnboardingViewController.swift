@@ -9,8 +9,8 @@
 import RxCocoa
 import RxSwift
 
-final class OnboardingViewController: UIViewController {
-	
+final class OnboardingViewController: UIViewController, HideNavigationBar, Bag {
+
 	private let viewModel: OnboardingViewModel
 	
 	private var viewInterface: OnboardingViewInterface {
@@ -36,18 +36,14 @@ final class OnboardingViewController: UIViewController {
 		bindModule()
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		print(RxSwift.Resources.total)
-	}
-	
 	private func bindModule() {
 		let input = OnboardingViewModel.Input(
-			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in },
-			loginButtonTap: viewInterface.loginButtonTap,
+			viewDidAppear: rx.viewDidAppear,
+			loginButtonTap: viewInterface.logInButtonTap,
 			signUpButtonTap: viewInterface.signUpButtonTap,
 			skipButtonTap: viewInterface.skipButtonTap
 		)
-		viewModel.transform(input: input)
+		let output = viewModel.transform(input: input)
+		hideNavigationBar(with: output.hideNavigationBar)
 	}
 }

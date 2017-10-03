@@ -17,6 +17,7 @@ struct HomeViewModel {
 	}
 	
 	struct Output {
+		let showNavigationBar: Observable<Bool>
 		let feedItems: Observable<[FeedItem]>
 	}
 	
@@ -36,11 +37,9 @@ struct HomeViewModel {
 	}
 	
 	func transform(input: Input) -> Output {
-		wireframe.showNavigationBar(with: input.viewDidAppear)
 		return Output(
-			feedItems: input
-				.viewWillAppear
-				.map { self.feedItems }
+			showNavigationBar: input.viewDidAppear.map { true },
+			feedItems: input.viewWillAppear.map { [feedItems] in feedItems }
 		)
 	}
 }

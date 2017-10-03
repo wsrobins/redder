@@ -10,23 +10,23 @@ import RxCocoa
 import RxSwift
 
 protocol OnboardingViewInterface: class {
-	var loginButtonTap: ControlEvent<Void> { get }
-	var signUpButtonTap: ControlEvent<Void> { get }
-	var skipButtonTap: ControlEvent<Void> { get }
+	var logInButtonTap: Observable<Void> { get }
+	var signUpButtonTap: Observable<Void> { get }
+	var skipButtonTap: Observable<Void> { get }
 }
 
 final class OnboardingView: UIView {
 	
 	private lazy var buttonContainerView = UIView()
 	
-	private lazy var loginButton: UIButton = {
-		let loginButton = UIButton()
-		loginButton.setTitle("LOGIN", for: .normal)
-		loginButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
-		loginButton.setTitleColor(.black, for: .normal)
-		loginButton.setTitleColor(.appDarkGray, for: .highlighted)
-		loginButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
-		return loginButton
+	private lazy var logInButton: UIButton = {
+		let logInButton = UIButton()
+		logInButton.setTitle("LOG IN", for: .normal)
+		logInButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
+		logInButton.setTitleColor(.black, for: .normal)
+		logInButton.setTitleColor(.appDarkGray, for: .highlighted)
+		logInButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
+		return logInButton
 	}()
 	
 	private lazy var signUpButton: UIButton = {
@@ -66,7 +66,7 @@ final class OnboardingView: UIView {
 	
 	private func assemble() {
 		addSubview(buttonContainerView)
-		buttonContainerView.addSubview(loginButton)
+		buttonContainerView.addSubview(logInButton)
 		buttonContainerView.addSubview(signUpButton)
 		addSubview(skipButton)
 	}
@@ -76,11 +76,11 @@ final class OnboardingView: UIView {
 			make.centerX.equalToSuperview()
 			make.centerY.equalToSuperview().offset(-10)
 		}
-		loginButton.snp.remakeConstraints { make in
+		logInButton.snp.remakeConstraints { make in
 			make.top.left.right.equalToSuperview()
 		}
 		signUpButton.snp.remakeConstraints { make in
-			make.top.equalTo(loginButton.snp.bottom).offset(40)
+			make.top.equalTo(logInButton.snp.bottom).offset(40)
 			make.left.bottom.right.equalToSuperview()
 		}
 		skipButton.snp.remakeConstraints { make in
@@ -92,15 +92,15 @@ final class OnboardingView: UIView {
 
 extension OnboardingView: OnboardingViewInterface {
 	
-	var loginButtonTap: ControlEvent<Void> {
-		return loginButton.rx.tap
+	var logInButtonTap: Observable<Void> {
+		return logInButton.rx.tap.asObservable()
 	}
 	
-	var signUpButtonTap: ControlEvent<Void> {
-		return signUpButton.rx.tap
+	var signUpButtonTap: Observable<Void> {
+		return signUpButton.rx.tap.asObservable()
 	}
 	
-	var skipButtonTap: ControlEvent<Void> {
-		return skipButton.rx.tap
+	var skipButtonTap: Observable<Void> {
+		return skipButton.rx.tap.asObservable()
 	}
 }

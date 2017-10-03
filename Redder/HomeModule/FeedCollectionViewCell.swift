@@ -14,7 +14,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
 	private lazy var cardView: UIView = {
 		let cardView = UIView()
 		cardView.backgroundColor = .white
-		cardView.shadow()
+		cardView.shadow(depth: .shallow)
 		return cardView
 	}()
 	

@@ -16,7 +16,7 @@ struct SignUpViewModel {
 	}
 	
 	struct Output {
-		
+		let showNavigationBar: Observable<Bool>
 	}
 	
 	private unowned let wireframe: Wireframe
@@ -26,7 +26,8 @@ struct SignUpViewModel {
 	}
 	
 	func transform(input: Input) -> Output {
-		wireframe.showNavigationBar(with: input.viewDidAppear)
-		return Output()
+		return Output(
+			showNavigationBar: input.viewDidAppear.map { true }
+		)
 	}
 }

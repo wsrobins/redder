@@ -13,9 +13,13 @@ struct OnboardingViewModel {
 
 	struct Input {
 		let viewDidAppear: Observable<Void>
-		let loginButtonTap: ControlEvent<Void>
-		let signUpButtonTap: ControlEvent<Void>
-		let skipButtonTap: ControlEvent<Void>
+		let loginButtonTap: Observable<Void>
+		let signUpButtonTap: Observable<Void>
+		let skipButtonTap: Observable<Void>
+	}
+	
+	struct Output {
+		let hideNavigationBar: Observable<Bool>
 	}
 	
 	private unowned let wireframe: Wireframe
@@ -24,10 +28,12 @@ struct OnboardingViewModel {
 		self.wireframe = wireframe
 	}
 	
-	func transform(input: Input) {
-		wireframe.hideNavigationBar(with: input.viewDidAppear)
-		wireframe.transitionToLoginModule(with: input.loginButtonTap.asObservable())
-		wireframe.transitionToSignUpModule(with: input.signUpButtonTap.asObservable())
-		wireframe.transitionToHomeModule(with: input.skipButtonTap.asObservable())
+	func transform(input: Input) -> Output {
+		wireframe.transitionToLoginModule(with: input.loginButtonTap)
+		wireframe.transitionToSignUpModule(with: input.signUpButtonTap)
+		wireframe.transitionToHomeModule(with: input.skipButtonTap)
+		return Output(
+			hideNavigationBar: input.viewDidAppear.map { true }
+		)
 	}
 }

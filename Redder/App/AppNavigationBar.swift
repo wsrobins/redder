@@ -23,6 +23,6 @@ class AppNavigationBar: UINavigationBar {
 		tintColor = .black
 		isTranslucent = false
 		shadowImage = UIImage()
-		shadow()
+		shadow(depth: .shallow)
 	}
 }

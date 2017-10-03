@@ -10,10 +10,15 @@ import RxCocoa
 import RxSwift
 
 struct LaunchViewModel {
-
+	
 	struct Input {
+		let viewWillAppear: Observable<Void>
 		let viewDidAppear: Observable<Void>
 		let launchAnimation: Observable<Void>
+	}
+	
+	struct Output {
+		let hideNavigationBar: Observable<Bool>
 	}
 	
 	private unowned let wireframe: Wireframe
@@ -21,8 +26,11 @@ struct LaunchViewModel {
 	init(wireframe: Wireframe) {
 		self.wireframe = wireframe
 	}
-
-	func transform(input: Input) {
+	
+	func transform(input: Input) -> Output {
 		wireframe.transitionFromLaunchModule(with: input.viewDidAppear.flatMap { input.launchAnimation })
+		return Output(
+			hideNavigationBar: input.viewWillAppear.map { false }
+		)
 	}
 }

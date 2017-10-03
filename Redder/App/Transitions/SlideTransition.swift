@@ -47,7 +47,7 @@ class SlideTransition: NSObject, UIViewControllerAnimatedTransitioning {
 	let direction: Direction
 	let duration: TimeInterval
 	
-	init(direction: Direction, duration: TimeInterval = 0.4) {
+	init(direction: Direction, duration: TimeInterval = 0.35) {
 		self.direction = direction
 		self.duration = duration
 	}

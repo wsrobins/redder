@@ -39,6 +39,7 @@ playground.xcworkspace
 # Packages/
 # Package.pins
 .build/
+Redder/App/Secrets.swift
 
 # CocoaPods
 #

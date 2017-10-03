@@ -17,4 +17,8 @@ extension UIColor {
 	static var appDarkGray: UIColor? {
 		return UIColor(named: "AppDarkGray")
 	}
+	
+	static var appBlueGray: UIColor? {
+		return UIColor(named: "AppBlueGray")
+	}
 }

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Redder/App/AppDelegate.swift"
-            timestampString = "528355114.035309"
+            filePath = "Redder/LoginModule/LoginView.swift"
+            timestampString = "528691596.472158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "toggleLogInButtonIsHidden(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

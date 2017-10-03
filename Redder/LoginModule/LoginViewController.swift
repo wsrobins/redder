@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController, ShowNavigationBar, Bag {
 	
 	private let viewModel: LoginViewModel
 	
@@ -20,7 +20,7 @@ final class LoginViewController: UIViewController {
 	init(viewModel: LoginViewModel) {
 		self.viewModel = viewModel
 		super.init(nibName: nil, bundle: nil)
-		title = "Login"
+		title = "Log In"
 		extendedLayoutIncludesOpaqueBars = true
 	}
 	
@@ -37,17 +37,33 @@ final class LoginViewController: UIViewController {
 		bindModule()
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		print(RxSwift.Resources.total)
-	}
-	
 	private func bindModule() {
 		let input = LoginViewModel.Input(
-			viewDidAppear: rx.sentMessage(#selector(viewDidAppear)).map { _ in },
+			viewDidAppear: rx.viewDidAppear,
+			usernameFieldText: viewInterface.usernameFieldText,
+			passwordFieldText: viewInterface.passwordFieldText,
+			usernameFieldReturnKeyTap: viewInterface.usernameFieldReturnKeyTap,
+			passwordFieldReturnKeyTap: viewInterface.passwordFieldReturnKeyTap,
+			logInButtonTap: viewInterface.logInButtonTap,
 			backgroundTap: viewInterface.backgroundTap
 		)
 		let output = viewModel.transform(input: input)
+		showNavigationBar(with: output.showNavigationBar)
+//		presentInvalidLoginAlert(with: output.presentInvalidLoginAlert)
+		viewInterface.presentKeyboard(with: output.presentKeyboard)
 		viewInterface.dismissKeyboard(with: output.dismissKeyboard)
+		viewInterface.nextField(with: output.nextField)
+		viewInterface.toggleLogInButtonIsHidden(with: output.toggleLogInButtonIsHidden)
+	}
+	
+	private func presentInvalidLoginAlert(with observable: Observable<String>) {
+		observable
+			.bind { [unowned self] alertTitle in
+				let invalidLoginAlertController = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
+				let dismissAlertAction = UIAlertAction(title: "Dismiss", style: .default)
+				invalidLoginAlertController.addAction(dismissAlertAction)
+				self.present(invalidLoginAlertController, animated: true, completion: nil)
+			}
+			.disposed(by: bag)
 	}
 }
