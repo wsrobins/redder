@@ -6,27 +6,38 @@
 //  Copyright © 2017 William Robinson. All rights reserved.
 //
 
+import RxCocoa
 import RxSwift
 
 extension Reactive where Base: UIViewController {
 	
-	var viewDidLoad: Observable<Void> {
-		return sentMessage(#selector(base.viewDidLoad)).map { _ in }
+	var viewDidLoad: Driver<Void> {
+		return sentMessage(#selector(base.viewDidLoad))
+			.map { _ in }
+			.asDriver(onErrorJustReturn: ())
 	}
 	
-	var viewWillAppear: Observable<Void> {
-		return sentMessage(#selector(base.viewWillAppear)).map { _ in }
+	var viewWillAppear: Driver<Void> {
+		return sentMessage(#selector(base.viewWillAppear))
+			.map { _ in }
+			.asDriver(onErrorJustReturn: ())
 	}
 	
-	var viewDidAppear: Observable<Void> {
-		return sentMessage(#selector(base.viewDidAppear)).map { _ in }
+	var viewDidAppear: Driver<Void> {
+		return sentMessage(#selector(base.viewDidAppear))
+			.map { _ in }
+			.asDriver(onErrorJustReturn: ())
 	}
 	
-	var viewWillDisappear: Observable<Void> {
-		return sentMessage(#selector(base.viewWillDisappear)).map { _ in }
+	var viewWillDisappear: Driver<Void> {
+		return sentMessage(#selector(base.viewWillDisappear))
+			.map { _ in }
+			.asDriver(onErrorJustReturn: ())
 	}
 	
-	var viewDidDisappear: Observable<Void> {
-		return sentMessage(#selector(base.viewDidDisappear)).map { _ in }
+	var viewDidDisappear: Driver<Void> {
+		return sentMessage(#selector(base.viewDidDisappear))
+			.map { _ in }
+			.asDriver(onErrorJustReturn: ())
 	}
 }

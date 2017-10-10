@@ -9,12 +9,12 @@
 import RxCocoa
 import RxSwift
 
-final class LaunchViewController: UIViewController, HideNavigationBar, Bag {
+final class LaunchViewController: UIViewController, Bag {
 	
 	private let viewModel: LaunchViewModel
 	
-	private var viewInterface: LaunchViewInterface {
-		return view as! LaunchViewInterface
+	private var viewOutput: LaunchViewOutput {
+		return view as! LaunchViewOutput
 	}
 	
 	init(viewModel: LaunchViewModel) {
@@ -36,12 +36,19 @@ final class LaunchViewController: UIViewController, HideNavigationBar, Bag {
 	}
 	
 	private func bindModule() {
-		let input = LaunchViewModel.Input(
+		let viewModelInput = LaunchViewModel.Input(
 			viewWillAppear: rx.viewWillAppear,
 			viewDidAppear: rx.viewDidAppear,
-			launchAnimation: viewInterface.launchAnimation
+			launchAnimation: viewOutput.launchAnimation
 		)
-		let output = viewModel.transform(input: input)
-		hideNavigationBar(with: output.hideNavigationBar)
+		let viewModelOutput = viewModel.transform(input: viewModelInput)
+		viewModelOutput
+			.hideNavigationBar
+			.drive(onNext: { self.hideNavigationBar(animated: $0) })
+			.disposed(by: bag)
+		viewModelOutput
+			.transitionFromLaunchModule
+			.drive()
+			.disposed(by: bag)
 	}
 }

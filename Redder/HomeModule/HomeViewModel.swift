@@ -12,12 +12,12 @@ import RxSwift
 struct HomeViewModel {
 	
 	struct Input {
-		let viewWillAppear: Observable<Void>
-		let viewDidAppear: Observable<Void>
+		let viewWillAppear: Driver<Void>
+		let viewDidAppear: Driver<Void>
 	}
 	
 	struct Output {
-		let showNavigationBar: Observable<Bool>
+		let showNavigationBar: Driver<Bool>
 		let feedItems: Observable<[FeedItem]>
 	}
 	
@@ -38,8 +38,13 @@ struct HomeViewModel {
 	
 	func transform(input: Input) -> Output {
 		return Output(
-			showNavigationBar: input.viewDidAppear.map { true },
-			feedItems: input.viewWillAppear.map { [feedItems] in feedItems }
+			showNavigationBar: input
+				.viewDidAppear
+				.map { true },
+			feedItems: input
+				.viewWillAppear
+				.map { self.feedItems }
+				.asObservable()
 		)
 	}
 }

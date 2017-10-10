@@ -12,13 +12,14 @@ import RxSwift
 struct LaunchViewModel {
 	
 	struct Input {
-		let viewWillAppear: Observable<Void>
-		let viewDidAppear: Observable<Void>
-		let launchAnimation: Observable<Void>
+		let viewWillAppear: Driver<Void>
+		let viewDidAppear: Driver<Void>
+		let launchAnimation: Driver<Void>
 	}
 	
 	struct Output {
-		let hideNavigationBar: Observable<Bool>
+		let hideNavigationBar: Driver<Bool>
+		let transitionFromLaunchModule: Driver<Void>
 	}
 	
 	private unowned let wireframe: Wireframe
@@ -28,9 +29,14 @@ struct LaunchViewModel {
 	}
 	
 	func transform(input: Input) -> Output {
-		wireframe.transitionFromLaunchModule(with: input.viewDidAppear.flatMap { input.launchAnimation })
 		return Output(
-			hideNavigationBar: input.viewWillAppear.map { false }
+			hideNavigationBar: input
+				.viewWillAppear
+				.map { false },
+			transitionFromLaunchModule: input
+				.viewDidAppear
+				.flatMap { input.launchAnimation }
+				.do(onNext: { self.wireframe.transitionFromLaunchModule() })
 		)
 	}
 }

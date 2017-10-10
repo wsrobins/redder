@@ -17,18 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Redder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bma-DB-1dD">
-                                <rect key="frame" x="77.666666666666686" y="364" width="220" height="84"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="70"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" name="AppLightGray"/>
-                        <constraints>
-                            <constraint firstItem="Bma-DB-1dD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gZR-uU-JbR"/>
-                            <constraint firstItem="Bma-DB-1dD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hQE-zf-00S"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

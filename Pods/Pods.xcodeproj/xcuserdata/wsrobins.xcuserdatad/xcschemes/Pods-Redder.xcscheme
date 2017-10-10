@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F30470CD15F9AE8F83135CE61594AD7D"
+               BlueprintIdentifier = "7EE090189A8E8A52BCE149C4B18F26DD"
                BuildableName = "Pods_Redder.framework"
                BlueprintName = "Pods-Redder"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F30470CD15F9AE8F83135CE61594AD7D"
+            BlueprintIdentifier = "7EE090189A8E8A52BCE149C4B18F26DD"
             BuildableName = "Pods_Redder.framework"
             BlueprintName = "Pods-Redder"
             ReferencedContainer = "container:Pods.xcodeproj">

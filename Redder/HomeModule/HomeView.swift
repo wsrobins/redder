@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-protocol HomeViewInterface: class {
+protocol HomeViewInput: class {
 	func bind(feedItems: Observable<[FeedItem]>)
 }
 
@@ -49,7 +49,7 @@ final class HomeView: UIView {
 	}
 }
 
-extension HomeView: HomeViewInterface {
+extension HomeView: HomeViewInput {
 	
 	func bind(feedItems: Observable<[FeedItem]>) {
 		let reuseIdentifier = FeedCollectionViewCell.reuseIdentifier

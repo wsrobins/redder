@@ -1,33 +1,24 @@
 PODS:
-  - RxCocoa (4.0.0-beta.0):
-    - RxSwift (~> 4.0.0-beta.0)
-  - RxGesture (1.1.1):
-    - RxCocoa (= 4.0.0-beta.0)
-    - RxSwift (= 4.0.0-beta.0)
-  - RxSwift (4.0.0-beta.0)
+  - hpple (0.2.0)
+  - RxCocoa (4.0.0-beta.1):
+    - RxSwift (~> 4.0.0-beta.1)
+  - RxSwift (4.0.0-beta.1)
   - SnapKit (4.0.0)
+  - WKZombie (1.1.0):
+    - hpple (= 0.2.0)
 
 DEPENDENCIES:
-  - RxCocoa (= 4.0.0-beta.0)
-  - RxGesture (from `git@github.com:sidmani/RxGesture.git`, branch `swift-4`)
+  - RxCocoa (= 4.0.0-beta.1)
   - SnapKit
-
-EXTERNAL SOURCES:
-  RxGesture:
-    :branch: swift-4
-    :git: git@github.com:sidmani/RxGesture.git
-
-CHECKOUT OPTIONS:
-  RxGesture:
-    :commit: a21055df59d91612ae9bba7b7a7dfd17f21dee30
-    :git: git@github.com:sidmani/RxGesture.git
+  - WKZombie
 
 SPEC CHECKSUMS:
-  RxCocoa: 8d809675f4e89c5c4c5a6900bbd11fe632ad5d86
-  RxGesture: f69e3daaf144cedbf382f6cbb38cfbaf775ba4ac
-  RxSwift: e0899fae37065c16db976cc5e3c957e4e388869c
+  hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57
+  RxCocoa: ca6cc0f4453145d90002d80df8f9c83dd8fb7338
+  RxSwift: 29f07e0e72cc5b40f146c64cc520ea6a6a0c73e9
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  WKZombie: bde6786b3c76f4336959d849b365c274d61d8286
 
-PODFILE CHECKSUM: ce61366e0a76823bbc7455b894d5c60d9ab4e3f7
+PODFILE CHECKSUM: b680bb25d747c2df63597e659734ea6f8d70fe0a
 
 COCOAPODS: 1.2.1

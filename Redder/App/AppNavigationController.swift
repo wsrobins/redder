@@ -9,11 +9,9 @@
 import RxSwift
 
 protocol Wireframe: class {
-	func transitionFromLaunchModule(with observable: Observable<Void>)
-	func transitionToOnboardingModule(with observable: Observable<Void>)
-	func transitionToLoginModule(with observable: Observable<Void>)
-	func transitionToSignUpModule(with observable: Observable<Void>)
-	func transitionToHomeModule(with observable: Observable<Void>)
+	func transitionFromLaunchModule()
+	func transitionToOnboardingModule()
+	func transitionToHomeModule()
 }
 
 class AppNavigationController: UINavigationController, Bag {
@@ -43,12 +41,8 @@ extension AppNavigationController: UINavigationControllerDelegate {
 	
 	func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 		switch (fromVC, toVC) {
-		case (is LaunchViewController, _),
-		     (is OnboardingViewController, _):
+		case (is LaunchViewController, _):
 			return SlideTransition(direction: .left)
-		case (is LoginViewController, is OnboardingViewController),
-		     (is SignUpViewController, is OnboardingViewController):
-			return SlideTransition(direction: .right)
 		default:
 			return nil
 		}
@@ -57,48 +51,21 @@ extension AppNavigationController: UINavigationControllerDelegate {
 
 extension AppNavigationController: Wireframe {
 	
-	func transitionFromLaunchModule(with observable: Observable<Void>) {
-		transitionToOnboardingModule(with: observable.take(1))
+	func transitionFromLaunchModule() {
+		transitionToOnboardingModule()
 	}
 	
-	func transitionToOnboardingModule(with observable: Observable<Void>) {
-		observable
-			.bind { [unowned self] in
-				let onboardingViewModel = OnboardingViewModel(wireframe: self)
-				let onboardingViewController = OnboardingViewController(viewModel: onboardingViewModel)
-				self.setViewControllers([onboardingViewController], animated: true)
-			}
-			.disposed(by: bag)
+	func transitionToOnboardingModule() {
+		guard !viewControllers.contains(type: OnboardingViewController.self) else { return }
+		let onboardingViewModel = OnboardingViewModel(wireframe: self)
+		let onboardingViewController = OnboardingViewController(viewModel: onboardingViewModel)
+		self.setViewControllers([onboardingViewController], animated: true)
 	}
 	
-	func transitionToLoginModule(with observable: Observable<Void>) {
-		observable
-			.bind { [unowned self] in
-				let loginViewModel = LoginViewModel(wireframe: self)
-				let loginViewController = LoginViewController(viewModel: loginViewModel)
-				self.pushViewController(loginViewController, animated: true)
-			}
-			.disposed(by: bag)
-	}
-	
-	func transitionToSignUpModule(with observable: Observable<Void>) {
-		observable
-			.bind { [unowned self] in
-				let signUpViewModel = SignUpViewModel(wireframe: self)
-				let signUpViewController = SignUpViewController(viewModel: signUpViewModel)
-				self.pushViewController(signUpViewController, animated: true)
-			}
-			.disposed(by: bag)
-	}
-	
-	func transitionToHomeModule(with observable: Observable<Void>) {
-		observable
-			.take(1)
-			.bind { [unowned self] in
-				let homeViewModel = HomeViewModel(wireframe: self)
-				let homeViewController = HomeViewController(viewModel: homeViewModel)
-				self.setViewControllers([homeViewController], animated: true)
-			}
-			.disposed(by: bag)
+	func transitionToHomeModule() {
+		guard !viewControllers.contains(type: HomeViewController.self) else { return }
+		let homeViewModel = HomeViewModel(wireframe: self)
+		let homeViewController = HomeViewController(viewModel: homeViewModel)
+		self.setViewControllers([homeViewController], animated: true)
 	}
 }

@@ -10,16 +10,14 @@ import RxCocoa
 import RxSwift
 
 struct OnboardingViewModel {
-
+	
 	struct Input {
-		let viewDidAppear: Observable<Void>
-		let loginButtonTap: Observable<Void>
-		let signUpButtonTap: Observable<Void>
-		let skipButtonTap: Observable<Void>
+		let viewDidAppear: Driver<Void>
 	}
 	
 	struct Output {
-		let hideNavigationBar: Observable<Bool>
+		let loadAuthURLRequest: Driver<URLRequest>
+		let hideNavigationBar: Driver<Bool>
 	}
 	
 	private unowned let wireframe: Wireframe
@@ -29,10 +27,9 @@ struct OnboardingViewModel {
 	}
 	
 	func transform(input: Input) -> Output {
-		wireframe.transitionToLoginModule(with: input.loginButtonTap)
-		wireframe.transitionToSignUpModule(with: input.signUpButtonTap)
-		wireframe.transitionToHomeModule(with: input.skipButtonTap)
+		let authURLRequest = URLRequest(url: URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=\(Secrets.clientID)&response_type=code&state=lol&redirect_uri=https://google.com&duration=permanent&scope=mysubreddits")!)
 		return Output(
+			loadAuthURLRequest: input.viewDidAppear.map { authURLRequest },
 			hideNavigationBar: input.viewDidAppear.map { true }
 		)
 	}

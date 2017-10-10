@@ -9,43 +9,34 @@
 import RxCocoa
 import RxSwift
 
-protocol OnboardingViewInterface: class {
-	var logInButtonTap: Observable<Void> { get }
-	var signUpButtonTap: Observable<Void> { get }
-	var skipButtonTap: Observable<Void> { get }
+protocol OnboardingViewOutput: class {
+	var connectButtonTap: Driver<Void> { get }
+	var skipButtonTap: Driver<Void> { get }
 }
 
 final class OnboardingView: UIView {
 	
-	private lazy var buttonContainerView = UIView()
-	
-	private lazy var logInButton: UIButton = {
-		let logInButton = UIButton()
-		logInButton.setTitle("LOG IN", for: .normal)
-		logInButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
-		logInButton.setTitleColor(.black, for: .normal)
-		logInButton.setTitleColor(.appDarkGray, for: .highlighted)
-		logInButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
-		return logInButton
-	}()
-	
-	private lazy var signUpButton: UIButton = {
-		let signUpButton = UIButton()
-		signUpButton.setTitle("SIGN UP", for: .normal)
-		signUpButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
-		signUpButton.setTitleColor(.black, for: .normal)
-		signUpButton.setTitleColor(.appDarkGray, for: .highlighted)
-		signUpButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
-		return signUpButton
+	private lazy var connectButton: UIButton = {
+		let connectButton = UIButton()
+		connectButton.setTitle("CONNECT REDDIT ACCOUNT", for: .normal)
+		connectButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
+		connectButton.setTitleColor(.black, for: .normal)
+		connectButton.setTitleColor(.appDarkGray, for: .highlighted)
+		connectButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
+		connectButton.cornerRadius()
+		connectButton.shadow(depth: .deep)
+		return connectButton
 	}()
 	
 	private lazy var skipButton: UIButton = {
 		let skipButton = UIButton()
-		skipButton.setTitle("SKIP", for: .normal)
+		skipButton.setTitle("SKIP FOR NOW", for: .normal)
 		skipButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .light)
 		skipButton.setTitleColor(.black, for: .normal)
 		skipButton.setTitleColor(.appDarkGray, for: .highlighted)
 		skipButton.contentEdgeInsets = UIEdgeInsets(top: 20, left: 40, bottom: 20, right: 40)
+		skipButton.cornerRadius()
+		skipButton.shadow(depth: .deep)
 		return skipButton
 	}()
 	
@@ -65,24 +56,22 @@ final class OnboardingView: UIView {
 	}
 	
 	private func assemble() {
-		addSubview(buttonContainerView)
-		buttonContainerView.addSubview(logInButton)
-		buttonContainerView.addSubview(signUpButton)
+		addSubview(connectButton)
 		addSubview(skipButton)
 	}
 	
 	private func layout() {
-		buttonContainerView.snp.remakeConstraints { make in
-			make.centerX.equalToSuperview()
-			make.centerY.equalToSuperview().offset(-10)
+		layoutConnectButton()
+		layoutSkipButton()
+	}
+	
+	private func layoutConnectButton() {
+		connectButton.snp.remakeConstraints { make in
+			make.center.equalToSuperview()
 		}
-		logInButton.snp.remakeConstraints { make in
-			make.top.left.right.equalToSuperview()
-		}
-		signUpButton.snp.remakeConstraints { make in
-			make.top.equalTo(logInButton.snp.bottom).offset(40)
-			make.left.bottom.right.equalToSuperview()
-		}
+	}
+	
+	private func layoutSkipButton() {
 		skipButton.snp.remakeConstraints { make in
 			make.bottom.equalToSuperview().inset(20)
 			make.centerX.equalToSuperview()
@@ -90,17 +79,13 @@ final class OnboardingView: UIView {
 	}
 }
 
-extension OnboardingView: OnboardingViewInterface {
+extension OnboardingView: OnboardingViewOutput {
 	
-	var logInButtonTap: Observable<Void> {
-		return logInButton.rx.tap.asObservable()
+	var connectButtonTap: Driver<Void> {
+		return connectButton.rx.tap.asDriver()
 	}
 	
-	var signUpButtonTap: Observable<Void> {
-		return signUpButton.rx.tap.asObservable()
-	}
-	
-	var skipButtonTap: Observable<Void> {
-		return skipButton.rx.tap.asObservable()
+	var skipButtonTap: Driver<Void> {
+		return skipButton.rx.tap.asDriver()
 	}
 }

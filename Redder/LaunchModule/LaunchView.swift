@@ -6,10 +6,11 @@
 //  Copyright © 2017 William Robinson. All rights reserved.
 //
 
+import RxCocoa
 import RxSwift
 
-protocol LaunchViewInterface: class {
-	var launchAnimation: Observable<Void> { get }
+protocol LaunchViewOutput: class {
+	var launchAnimation: Driver<Void> { get }
 }
 
 final class LaunchView: UIView {
@@ -48,14 +49,16 @@ final class LaunchView: UIView {
 	}
 }
 
-extension LaunchView: LaunchViewInterface {
+extension LaunchView: LaunchViewOutput {
 	
-	var launchAnimation: Observable<Void> {
-		return .create { observer in
-			UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
-				self.redderLabel.alpha = 0
-			}) { _ in observer.onNext(()) }
-			return Disposables.create()
-		}
+	var launchAnimation: Driver<Void> {
+		return Observable
+			.create { observer in
+				UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
+					self.redderLabel.alpha = 0
+				}) { _ in observer.onNext(()) }
+				return Disposables.create()
+			}
+			.asDriver(onErrorJustReturn: ())
 	}
 }
